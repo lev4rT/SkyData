@@ -1,8 +1,0 @@
-//
-// Created by yaroslav on 11.11.2020.
-//
-
-#ifndef PROJECT_MESSAGE_LISTENER_H
-#define PROJECT_MESSAGE_LISTENER_H
-
-#endif //PROJECT_MESSAGE_LISTENER_H
