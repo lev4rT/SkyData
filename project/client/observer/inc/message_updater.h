@@ -1,0 +1,8 @@
+//
+// Created by yaroslav on 11.11.2020.
+//
+
+#ifndef PROJECT_MESSAGE_UPDATER_H
+#define PROJECT_MESSAGE_UPDATER_H
+
+#endif //PROJECT_MESSAGE_UPDATER_H
