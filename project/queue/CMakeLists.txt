@@ -3,6 +3,7 @@ project(queue)
 
 set(CMAKE_CXX_STANDARD 14)
 
+set(GTEST_ROOT /usr/src/googletest/googletest)
 find_package( GTest REQUIRED )
 include_directories(${GTEST_INCLUDE_DIRS})
 
