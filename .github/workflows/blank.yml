@@ -1,0 +1,44 @@
+name: Simple_CI
+
+on: [push]
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: install_default_libs
+        run: |
+          sudo apt-get install valgrind
+          sudo apt-get install clang-tidy
+          sudo apt-get install cppcheck
+          sudo apt-get install python3-pip
+          sudo apt-get install gcovr
+      - name: install_gtest
+        run: |
+          sudo apt-get install googletest
+          sudo cp -a /usr/src/googletest/googletest/include/gtest /usr/include
+      - name: install_gtest
+        run: |
+          sudo apt-get install google-mock
+          cd /usr/src/googletest/googlemock
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp -a /usr/src/googletest/googlemock/include/gmock /usr/include
+          
+      - name: build
+        run: |
+          cd project/queue
+          mkdir build && cd build
+          sudo cmake ../
+          sudo make
+      - name: run_prog
+        run: |
+          cd IZ_2/build
+          ./queue 777
+      - name: run_tests
+        run: |
+          cd IZ_2/build
+          ./tests_gmock
