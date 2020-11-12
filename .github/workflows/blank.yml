@@ -16,29 +16,25 @@ jobs:
           sudo apt-get install cppcheck
           sudo apt-get install python3-pip
           sudo apt-get install gcovr
-      - name: install_gtest
+      - name: install_lib_gtest
         run: |
           sudo apt-get install googletest
+          cd /usr/src/googletest/googletest
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp *.a /usr/lib
           sudo cp -a /usr/src/googletest/googletest/include/gtest /usr/include
-      - name: install_gtest
+      - name: install_gmock
         run: |
           sudo apt-get install google-mock
           cd /usr/src/googletest/googlemock
           sudo cmake CMakeLists.txt
           sudo make
+          sudo cp *.a /usr/lib
           sudo cp -a /usr/src/googletest/googlemock/include/gmock /usr/include
-          
       - name: build
         run: |
           cd project/queue
           mkdir build && cd build
           sudo cmake ../
           sudo make
-      - name: run_prog
-        run: |
-          cd IZ_2/build
-          ./queue 777
-      - name: run_tests
-        run: |
-          cd IZ_2/build
-          ./tests_gmock
