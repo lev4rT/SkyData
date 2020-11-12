@@ -9,19 +9,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: install libs
+      - name: install_default_libs
         run: |
           sudo apt-get install valgrind
           sudo apt-get install clang-tidy
           sudo apt-get install cppcheck
           sudo apt-get install python3-pip
           sudo apt-get install gcovr
+      - name: install_gtest
+        run: |
           sudo apt-get install gtest
+          sudo cp -a /usr/src/googletest/googletest/include/gtest /usr/include
+      - name: install_gtest
+        run: |
           sudo apt-get install google-mock
           sudo cd /usr/src/googletest/googlemock
           sudo cmake CMakeLists.txt
           sudo make
-          sudo cp -a /usr/src/googletest/googletest/include/gtest /usr/include
           sudo cp -a /usr/src/googletest/googlemock/include/gmock /usr/include
           
       - name: build
