@@ -16,7 +16,7 @@ jobs:
           sudo apt-get install cppcheck
           sudo apt-get install python3-pip
           sudo apt-get install gcovr
-      - name: install_lib_gtest
+      - name: install_gtest
         run: |
           sudo apt-get install googletest
           cd /usr/src/googletest/googletest
@@ -36,3 +36,11 @@ jobs:
           mkdir build && cd build
           sudo cmake ../
           sudo make
+      - name: run_main
+        run: |
+          cd project/queue/build
+          ./queue 777
+      - name: run_tests
+        run: |
+          cd project/queue/build
+          ./tests_gmock
