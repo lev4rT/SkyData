@@ -23,7 +23,7 @@ jobs:
       - name: install_gtest
         run: |
           sudo apt-get install google-mock
-          sudo cd /usr/src/googletest/googlemock
+          cd /usr/src/googletest/googlemock
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp -a /usr/src/googletest/googlemock/include/gmock /usr/include
